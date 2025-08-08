@@ -18,9 +18,11 @@ Create venv
 python -m venv .venv
 ```
 
-# Activate venv
-# On Windows (PowerShell)
+Activate venv On Windows (PowerShell)
+
+``` bash
 .venv\Scripts\activate
+```
 
 ### 3️⃣ Install Ollama
 
@@ -29,3 +31,43 @@ After installing, run:
 ```bash
 ollama run gemma3:12b
 ```
+
+This will download the model locally.
+
+4️⃣ Install Python Requirements
+
+```bash
+
+pip install -r requirements.txt
+```
+
+5️⃣ Run the Script
+
+```bash
+python img_to_text.py
+
+```
+
+### 📂 Project Structure
+
+```bash
+
+fix_mate/
+│
+├── file/
+│   └── test.jpg           # Sample image
+├── img_to_text.py         # Main script to process image
+├── requirements.txt       # Python dependencies
+└── README.md              # Project documentation
+```
+
+### 📝 How It Works
+
+- User uploads image of a damaged object (e.g., broken pipe).
+- Ollama multimodal model (like llava or gemma3 if vision-enabled) describes the image.
+- The description is processed by a local language model to provide repair suggestions.
+
+### ⚙️ Requirements
+- Python 3.9+
+- Ollama installed locally
+- GPU recommended for faster inference
