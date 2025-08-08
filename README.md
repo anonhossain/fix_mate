@@ -22,5 +22,10 @@ python -m venv .venv
 # On Windows (PowerShell)
 .venv\Scripts\activate
 
-# On macOS/Linux
-source .venv/bin/activate
+### 3️⃣ Install Ollama
+
+After installing, run:
+
+```bash
+ollama run gemma3:12b
+```
