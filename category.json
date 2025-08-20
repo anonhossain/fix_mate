@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "category_name": "Electronics",
+    "slug": "electronics"
+  },
+  {
+    "id": 2,
+    "category_name": "Fashion",
+    "slug": "fashion"
+  },
+  {
+    "id": 3,
+    "category_name": "Home & Kitchen",
+    "slug": "home-kitchen"
+  },
+  {
+    "id": 4,
+    "category_name": "Beauty & Personal Care",
+    "slug": "beauty-personal-care"
+  },
+  {
+    "id": 5,
+    "category_name": "Sports & Outdoors",
+    "slug": "sports-outdoors"
+  },
+  {
+    "id": 6,
+    "category_name": "Toys & Games",
+    "slug": "toys-games"
+  },
+  {
+    "id": 7,
+    "category_name": "Books",
+    "slug": "books"
+  },
+  {
+    "id": 8,
+    "category_name": "Grocery",
+    "slug": "grocery"
+  },
+  {
+    "id": 9,
+    "category_name": "Health & Wellness",
+    "slug": "health-wellness"
+  },
+  {
+    "id": 10,
+    "category_name": "Office Supplies",
+    "slug": "office-supplies"
+  },
+  {
+    "id": 11,
+    "category_name": "Automotive",
+    "slug": "automotive"
+  },
+  {
+    "id": 12,
+    "category_name": "Jewelry & Accessories",
+    "slug": "jewelry-accessories"
+  },
+  {
+    "id": 13,
+    "category_name": "Music & Instruments",
+    "slug": "music-instruments"
+  },
+  {
+    "id": 14,
+    "category_name": "Pet Supplies",
+    "slug": "pet-supplies"
+  },
+  {
+    "id": 15,
+    "category_name": "Baby Products",
+    "slug": "baby-products"
+  },
+  {
+    "id": 16,
+    "category_name": "Garden & Outdoor",
+    "slug": "garden-outdoor"
+  },
+  {
+    "id": 17,
+    "category_name": "Furniture",
+    "slug": "furniture"
+  },
+  {
+    "id": 18,
+    "category_name": "Shoes",
+    "slug": "shoes"
+  },
+  {
+    "id": 19,
+    "category_name": "Travel & Luggage",
+    "slug": "travel-luggage"
+  },
+  {
+    "id": 20,
+    "category_name": "Software & Apps",
+    "slug": "software-apps"
+  },
+  {
+    "id": 21,
+    "category_name": "Phone",
+    "slug": "phone"
+  }
+]
