@@ -103,5 +103,40 @@
     "id": 21,
     "category_name": "Phone",
     "slug": "phone"
+  },
+  {
+    "id": 22,
+    "category_name": "Plumbing & Water Systems",
+    "slug": "plumbing-water"
+  },
+  {
+    "id": 23,
+    "category_name": "Electrical Systems",
+    "slug": "electrical"
+  },
+  {
+    "id": 24,
+    "category_name": "HVAC & Climate Control",
+    "slug": "hvac"
+  },
+  {
+    "id": 25,
+    "category_name": "Structural & Building",
+    "slug": "structural"
+  },
+  {
+    "id": 26,
+    "category_name": "Appliances",
+    "slug": "appliances"
+  },
+  {
+    "id": 27,
+    "category_name": "Tools & Equipment",
+    "slug": "tools-equipment"
+  },
+  {
+    "id": 28,
+    "category_name": "Safety & Emergency",
+    "slug": "safety-emergency"
   }
 ]
