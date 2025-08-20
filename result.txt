@@ -1,8 +1,8 @@
 {
   "category": "Furniture",
   "suggestions": [
-    "Clear the area around the table of all broken fragments to prevent tripping or cuts.",
-    "If the table can still stand, secure the remaining legs or move the table to a stable surface to avoid collapse.",
-    "Wear protective gloves and use a brush or vacuum to clean up any splinters or sharp edges before handling or disposing of the broken parts."
+    "Clear all broken pieces from the floor to prevent tripping or injury.",
+    "Secure the remaining structure\u2014use clamps or a temporary support, or replace the table if it cannot be safely repaired.",
+    "Inspect the surrounding area for additional damage or instability before placing any items or people back on the table."
   ]
 }
