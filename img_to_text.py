@@ -1,6 +1,7 @@
 import requests
 import base64
 import json
+from prompt import detection_prompt, suggestion_prompt
 
 class IdentifySuggestion:
     def __init__(self):
@@ -15,17 +16,28 @@ class IdentifySuggestion:
             image_bytes = f.read()
         return base64.b64encode(image_bytes).decode("utf-8")
 
-    def _call_ollama(self, model, prompt, image_path=None):
+    def _call_ollama(self, model, prompt, image_path=None, temperature=0.3):
         payload = {
             "model": model,
             "prompt": prompt,
+            "options": {
+                "temperature": temperature,
+                "top_p": 0.9,
+                "top_k": 40,
+                "repeat_penalty": 1.1
+            }
         }
 
         if image_path:
             image_base64 = self._encode_image(image_path)
             payload["images"] = [image_base64]
 
-        response = requests.post(self.api_url, json=payload, stream=True)
+        try:
+            response = requests.post(self.api_url, json=payload, stream=True, timeout=60)
+            response.raise_for_status()
+        except requests.exceptions.RequestException as e:
+            print(f"❌ Error calling Ollama API: {e}")
+            return f"Error: Could not connect to Ollama API. Please ensure Ollama is running on localhost:11434"
 
         result_text = ""
         for line in response.iter_lines():
@@ -39,8 +51,9 @@ class IdentifySuggestion:
 
     def detect_with_gemma(self, image_path):
         """Step 1: Use gemma3:12b to detect objects in the image"""
-        prompt = "Describe what is visible in this image with as much detail as possible. Specially describe the objects its situation."
-        result_text = self._call_ollama("gemma3:12b", prompt, image_path)
+        prompt = detection_prompt()
+        # Use slightly higher temperature for more detailed descriptions
+        result_text = self._call_ollama("gemma3:12b", prompt, image_path, temperature=0.4)
 
         # Save detection
         with open("detection.txt", "w", encoding="utf-8") as f:
@@ -50,18 +63,9 @@ class IdentifySuggestion:
 
     def analyze_with_gptoss(self, detection_text):
         """Step 2: Use gpt-oss:20b to classify + suggest"""
-        prompt = (
-            f"The detected object is: {detection_text}\n\n"
-            f"Categories: {self.categories}\n\n"
-            "Task: Identify which category this belongs to and provide 2-3 actionable safety suggestions. Give suggestions in short with all necessary details "
-            "in JSON format like this:\n"
-            "{\n"
-            '  \"category\": \"Home & Kitchen\",\n'
-            '  \"suggestions\": [\"Suggestion 1\", \"Suggestion 2\"]\n'
-            "}\n"
-        )
-
-        result_text = self._call_ollama("gpt-oss:20b", prompt)
+        prompt = suggestion_prompt(detection_text, self.categories)
+        # Use lower temperature for more structured/consistent JSON output
+        result_text = self._call_ollama("gpt-oss:20b", prompt, temperature=0.2)
 
         try:
             result_json = json.loads(result_text)
@@ -72,7 +76,15 @@ class IdentifySuggestion:
                 end = result_text.rindex("}") + 1
                 result_json = json.loads(result_text[start:end])
             except:
-                result_json = {"category": "Unknown", "suggestions": [result_text]}
+                # Enhanced fallback with basic structure
+                result_json = {
+                    "category": "Unknown", 
+                    "damage_severity": "Unknown",
+                    "immediate_actions": ["Ensure area is safe", "Keep people away from damaged item"],
+                    "repair_suggestions": [result_text],
+                    "professional_help_needed": True,
+                    "estimated_difficulty": "Unknown"
+                }
 
         # Save final result
         with open("result.txt", "w", encoding="utf-8") as f:
@@ -88,7 +100,7 @@ class IdentifySuggestion:
 
 if __name__ == "__main__":
     obj = IdentifySuggestion()
-    image_path = "file/r.jpg"
+    image_path = "file/R.jpg"  # Fixed case to match actual filename
     result = obj.main(image_path)
 
     print("✅ Detection saved to detection.txt")
