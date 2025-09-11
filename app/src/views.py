@@ -39,7 +39,7 @@ async def list_categories():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-
+###################################################### DEMO DATA ######################################################
 
 from fastapi import APIRouter, UploadFile, File, HTTPException, BackgroundTasks
 import shutil
@@ -96,3 +96,6 @@ def run_pipeline_in_background(image_filename: str):
         print(f"Pipeline complete for {image_filename}. Result saved at {result_file}")
     except Exception as e:
         print(f"Error in pipeline processing: {e}")
+
+
+###################################################### DEMO DATA ######################################################
