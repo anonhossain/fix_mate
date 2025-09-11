@@ -53,12 +53,12 @@ python img_to_text.py
 ```bash
 
 fix_mate/
-│
-├── file/
-│   └── test.jpg           # Sample image
-├── img_to_text.py         # Main script to process image
-├── requirements.txt       # Python dependencies
-└── README.md              # Project documentation
+├───.venv
+├───app
+│   ├───file
+│   ├───output
+│   ├───resources
+│   └───src
 ```
 
 ### 📝 How It Works
