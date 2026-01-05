@@ -1,8 +1,0 @@
-{
-  "category": "Furniture",
-  "suggestions": [
-    "Clear all broken pieces from the floor to prevent tripping or injury.",
-    "Secure the remaining structure\u2014use clamps or a temporary support, or replace the table if it cannot be safely repaired.",
-    "Inspect the surrounding area for additional damage or instability before placing any items or people back on the table."
-  ]
-}

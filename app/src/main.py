@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
     title="Fix Mate", 
+    version="1.0",
     description="This is a fix app powered by AI.",
 )
 
@@ -19,4 +20,4 @@ app.include_router(api_router)
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="10.10.13.7", port=8080, reload=True) #localhost
+    uvicorn.run("main:app", host="localhost", port=8080, reload=True) #localhost 10.10.13.7
